@@ -53,8 +53,8 @@ function App() {
   }
 
   let addToCart = (item) =>{
-    cart.items.push(item)
-    //cart.items = [...cart.items, item];
+    //cart.items.push(item)
+    cart.items = [...cart.items, item];
     cart.total = cart.items.reduce((totalCart, cartItem) => totalCart + cartItem.price, 0);
     console.log(cart)
     
