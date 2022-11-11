@@ -1,0 +1,8 @@
+React.StrictMode: tells use something you imported will give you 
+
+- npx - Node Package Execute
+	- gets installed with node, when you installed npm above 5.2.0 version then automatically npx will installed.
+
+- ejx - can not be used on react
+
+- 59562 : course 
