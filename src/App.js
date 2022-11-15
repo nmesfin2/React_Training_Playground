@@ -9,34 +9,53 @@ import './App.css';
 // Upload a zip of your project without including node_modules
 
 function App() {
-  var input ="Ip"
-  var products =[
+  var cars =[
     {
-      name: "iPhone",
-      price: 100
+      model: "Toyota Corolla",
+      milage: 100000,
+      price: 17000
     },
     {
-      name: "Ipad",
-      price: 100
+      model: "Toyota Camry",
+      milage: 100000,
+      price: 25000
     },
     {
-      name: "sumsung",
-      price: 100
+      model: "Bugatti",
+      milage: 15000,
+      price: 450000
     },
     {
-      name: "Nokia",
-      price: 100
+      model: "Range Rover",
+      milage: 25000,
+      price: 45000
     },
     {
-      name: "iPhone",
-      price: 100
+      model: "Honda civic",
+      milage: 50000,
+      price: 17000
     }
   ]
 
   let search = () =>{
-    let results = products.filter(product => product.name.includes(input));
+    let results = cars.filter(car => car.milage > 44000);
     return results;
   }
+
+  let searchCarsInRange = (min, max) =>{
+    let results = cars.filter(car => car.milage < min && car.milage > max);
+    return results;
+  }
+
+  //find average
+  let average = () =>{
+    let total = 0;
+    let results = cars.filter(car => total + car.price)
+    let average = results/cars.length;
+    return average;
+  
+  }
+
   var count = 0
   let increase = () =>{
     if(count === 0){
@@ -62,16 +81,22 @@ function App() {
     
   }
 
-  // forEach doesnt return anything, its better to use map instead
-  products.forEach(function (value){
+  // search by model
+  let searchByModel = (model) =>{
+    let result = cars.filter(car => car.model === model);
+    return result;
+  }
 
-  })
+  // forEach doesnt return anything, its better to use map instead
+  // products.forEach(function (value){
+
+  // })
 
   
 
   return (
     <div>
-      {
+      {/* {
         products.map((item, index) => { 
                 
           return <div key={index}>
@@ -80,7 +105,7 @@ function App() {
             </div> 
         })
         
-      }
+      } */}
       <button onClick={() =>increase()}>Increase </button>
       <h1>Search Results</h1>
       {
@@ -89,6 +114,27 @@ function App() {
         }) : <p>Empty staff</p>
       }
 
+      <h1>Search Results in Range</h1>
+      {
+        searchCarsInRange(120000, 20000).length > 0 ? searchCarsInRange(120000, 20000).map((serachResult, index) =>{
+          return <p key={index}>{serachResult.name} for ${serachResult.price}</p>
+        }) : <p>Empty staff</p>
+      }
+
+      <h1>Average</h1>
+      {
+       
+          
+       
+      }
+
+      <h1>Search by Model</h1>
+      {
+        searchByModel("Toyota Corolla").map((serachResult, index)=>{ 
+          return <p key={index}>{serachResult.name} for ${serachResult.price}</p>
+       
+      })
+    }
       
     </div>
   );
